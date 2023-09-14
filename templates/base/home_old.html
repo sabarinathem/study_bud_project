@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<style>
+    .home-container{
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+</style>
+
+
+
+<div class="home-container">
+    <!-- container for list of topic -->
+    <div>
+        <!-- Topic Component -->
+        {% include 'base/topic_components.html' %}
+    </div>
+
+    <!-- container for list of rooms -->
+    <div>
+        <h3>{{rooms_count}} {% if rooms_count >= 2 %}rooms are{% else %} room is {% endif %} available</h3>
+        <a href="{% url 'create-room' %}">Create Room</a>
+
+        <!-- Feed Components -->
+        {% include 'base/feed_components.html' %}
+
+    </div>
+
+    <!-- container for Recent Activities -->
+
+    <div>
+      <!-- activity component -->
+      {% include 'base/activity_components.html' %}
+    </div>
+    
+</div>
+{% endblock content %}
